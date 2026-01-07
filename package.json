@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test_cr_hd":"npx playwright test --project=chromium --headed",
-    "generate_report":"npx allure generate --clean",
+    "generate_report":"npx allure-commandline generate allure-results -o allure-report --clean",
     "open_report":"npx allure open"
   },
   "keywords": [],
