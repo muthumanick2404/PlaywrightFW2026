@@ -9,7 +9,7 @@ on:
 
 jobs:
   #We can add multiple jobs
-  Regression Test:
+  Regression_Test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
