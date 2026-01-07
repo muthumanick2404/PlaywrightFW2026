@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","10062","login with valid creds","firefox","2026-01-07","failed","2026-01-07","","login.spec.ts","",""
+"","6788","login with valid creds","chromium","2026-01-07","failed","2026-01-07","","login.spec.ts","",""
+"","9022","login with valid creds","webkit","2026-01-07","failed","2026-01-07","","login.spec.ts","",""
