@@ -11,6 +11,12 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
+    # 🔑 REQUIRED for GitHub Pages (Actions mode)
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -33,6 +39,7 @@ jobs:
       - name: Generate Allure report
         run: npm run generate_report
 
+      # ✅ Keep Playwright HTML as downloadable artifact
       - name: Upload Playwright HTML report
         uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
@@ -41,17 +48,11 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
-      - name: Upload Allure report
-        uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
+      # ✅ Upload it specifically for GitHub Pages
+      - name: Upload Allure report to Pages
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: allure-report
-          path: allure-report/
-          retention-days: 30
+          path: allure-report
 
-      - name: Publish Allure report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        if: github.ref == 'refs/heads/main'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: allure-report
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
