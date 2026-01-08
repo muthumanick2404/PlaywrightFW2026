@@ -11,7 +11,7 @@ jobs:
   #We can add multiple jobs
   Regression_Test:
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest windows-latest macos-latest]
 
     # 🔑 REQUIRED for GitHub Pages (Actions mode)
     permissions:
